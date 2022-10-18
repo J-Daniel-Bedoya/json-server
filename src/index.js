@@ -20,21 +20,21 @@
 // });
 
 const jsonServer = require("json-server");
-const server = jsonServer.create();
+const app = jsonServer.create();
 const router = jsonServer.router(`${__dirname}/data/db.json`);
 const middlewares = jsonServer.defaults();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
-server.use((req, res, next) => {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 
-server.use(router);
-server.use(middlewares);
+app.use(router);
+app.use(middlewares);
 
-server.listen(port, () => {
+app.listen(port, () => {
   console.log("JSON Server is running");
 });
