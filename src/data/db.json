@@ -1,9 +1,9 @@
 {
    "registroVuelo": {
         "id": 1,
-        "tipoVuelo": "",
-        "paísOrigen": "",
-        "Destino": "",
+        "tipoVuelo": "On",
+        "paísOrigen": "Colombia",
+        "Destino": "Colombia",
         "totalPersonas": {
           "adultos": 0,
           "niños": 0,
