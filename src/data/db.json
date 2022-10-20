@@ -1,5 +1,6 @@
 {
    "registroVuelo": {
+        "id": 1,
         "tipoVuelo": "",
         "paísOrigen": "",
         "Destino": "",
