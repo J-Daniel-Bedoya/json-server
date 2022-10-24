@@ -1,40 +1,20 @@
-// const jsonServer = require("json-server");
-// const server = jsonServer.create();
+require("dotenv").config({path:'./src/.env'});
+const express = require("express");
+const dbConnect = require("./config/mongo.js")
 
-// const router = jsonServer.router(`${__dirname}./data/db.json`);
-// const middlewares = jsonServer.defaults();
+const cors = require("cors");
+const app = express();
 
-// const PORT = process.env.PORT || 3001;
+app.use(express.json());
+app.use(cors());
 
-// server.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', '*');
-//     next();
-// })
+const PORT = process.env.PORT || 3000;
 
-// server.use(router);
-// server.use(middlewares);
+// aquí invoco a las rutas
+app.use("/api", require("./routes"))
 
-// server.listen(PORT, () => {
-//   console.log("JSON Server is running en port 3001");
-// });
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`) 
+})
 
-const jsonServer = require("json-server");
-const app = jsonServer.create();
-const router = jsonServer.router(`${__dirname}/data/db.json`);
-const middlewares = jsonServer.defaults();
-
-const port = process.env.PORT || 3001;
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
-
-app.use(router);
-app.use(middlewares);
-
-app.listen(port, () => {
-  console.log("JSON Server is running");
-});
+dbConnect();
